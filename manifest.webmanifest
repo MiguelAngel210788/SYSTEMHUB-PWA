@@ -1,0 +1,22 @@
+{
+  "id": "/SYSTEMHUB-PWA/",
+  "name": "Sistema de Enfermería · HUP",
+  "short_name": "HUP",
+  "description": "Sistema integral de gestión de enfermería HUP",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "start_url": "./?pwa=launch",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone"],
+  "orientation": "any",
+  "background_color": "#0F081C",
+  "theme_color": "#0F081C",
+  "prefer_related_applications": false,
+  "categories": ["medical", "productivity"],
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

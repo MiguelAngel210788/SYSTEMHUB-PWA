@@ -1,0 +1,113 @@
+:root {
+  color-scheme: dark;
+  --fondo: #0F081C;
+  --panel: #1A1030;
+  --texto: #EDE9FE;
+  --suave: #A79BC8;
+  --violeta: #8B5CF6;
+  --cian: #22D3EE;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--fondo);
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--texto);
+}
+
+[hidden] { display: none !important; }
+
+/* La aplicación ocupa el 100 % de la ventana; el contenedor no reserva espacio. */
+#app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  border: 0;
+  display: block;
+  background: var(--fondo);
+  visibility: hidden;
+}
+
+.centro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: auto;
+}
+
+.tarjeta { width: 100%; max-width: 420px; text-align: center; }
+.logo { width: 128px; height: 128px; border-radius: 28px; }
+h1 { font-size: 1.4rem; margin: 16px 0 4px; }
+p { color: var(--suave); margin: 4px 0 20px; }
+
+.boton {
+  display: block;
+  width: 100%;
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 14px;
+  font: 600 1rem system-ui, sans-serif;
+  cursor: pointer;
+}
+.primario { background: linear-gradient(90deg, var(--violeta), var(--cian)); color: #0F081C; }
+.primario:disabled { opacity: .5; cursor: default; }
+.enlace { background: none; color: var(--suave); margin-top: 8px; font-weight: 500; text-decoration: underline; }
+
+.pasos {
+  text-align: left;
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  color: var(--texto);
+  font-size: .95rem;
+}
+.pasos ol { margin: 6px 0 0; padding-left: 20px; }
+
+.campo {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 0 0 10px;
+  border-radius: 12px;
+  border: 1px solid #3A2A5C;
+  background: var(--panel);
+  color: var(--texto);
+  font: 1rem system-ui, sans-serif;
+}
+
+.estado { min-height: 1.4em; margin: 12px 0 0; color: var(--cian); font-size: .95rem; }
+.error { color: #FCA5A5; }
+
+/* Pantalla de arranque: queda debajo de la aplicación y se retira al cargar. */
+.carga {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px;
+  text-align: center;
+}
+.carga .logo { animation: latido 1.6s ease-in-out infinite; }
+.carga a { color: var(--suave); font-size: .9rem; }
+@keyframes latido { 0%, 100% { opacity: .75; transform: scale(.97); } 50% { opacity: 1; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .carga .logo { animation: none; } }
