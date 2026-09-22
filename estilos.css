@@ -107,7 +107,13 @@ p { color: var(--suave); margin: 4px 0 20px; }
   padding: 24px;
   text-align: center;
 }
-.carga .logo { animation: latido 1.6s ease-in-out infinite; }
+.carga .logo {
+  /* Logo de arranque grande: ocupa casi todo el ancho en móvil y hasta 480 px en pantallas grandes. */
+  width: min(88vmin, 480px);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  animation: latido 1.6s ease-in-out infinite;
+}
 .carga a { color: var(--suave); font-size: .9rem; }
 @keyframes latido { 0%, 100% { opacity: .75; transform: scale(.97); } 50% { opacity: 1; transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) { .carga .logo { animation: none; } }
