@@ -1,68 +1,27 @@
 <!doctype html>
-<html lang="es-MX" data-hup-env="qa" data-hup-base="../">
+<html lang="es-MX">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; frame-src https://script.google.com https://*.googleusercontent.com; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0F081C">
-  <meta name="color-scheme" content="dark">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="application-name" content="HUP QA">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="HUP QA">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <title>HUP · QA (pruebas)</title>
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="icon" type="image/png" sizes="48x48" href="../icons/favicon-48.png">
-  <link rel="apple-touch-icon" href="../icons/qa-apple-touch-icon.png">
-  <link rel="stylesheet" href="../estilos.css">
+  <title>HUP se mudó</title>
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0F081C; color: #EDE9FE; font: 16px/1.5 system-ui, sans-serif; text-align: center; padding: 16px; box-sizing: border-box; }
+    a { display: inline-block; margin-top: 16px; padding: 12px 22px; border-radius: 999px; background: #8B5CF6; color: #fff; font-weight: 700; text-decoration: none; }
+  </style>
 </head>
 <body>
-  <!-- Ambiente de PRUEBAS. Se instala con el enlace de QA (?backend=...) y recuerda la dirección en este dispositivo. -->
-  <main id="inicio" class="centro" hidden>
-    <div class="tarjeta">
-      <img class="logo" src="../icons/qa-icon-192.png" width="128" height="128" alt="Logo HUP QA">
-      <h1>HUP · QA (pruebas)</h1>
-      <p>Ambiente de pruebas. Instálalo para abrirlo a pantalla completa.</p>
-      <button id="btnInstalar" class="boton primario" type="button">Instalar aplicación</button>
-      <div id="ayudaInstalar" class="pasos" hidden>Abre el menú del navegador y elige «Instalar aplicación» o «Añadir a pantalla de inicio».</div>
-      <div id="pasosIos" class="pasos" hidden>
-        En iPhone o iPad:
-        <ol>
-          <li>Toca el botón <strong>Compartir</strong> (cuadro con flecha) de Safari.</li>
-          <li>Elige <strong>Añadir a pantalla de inicio</strong>.</li>
-          <li>Toca <strong>Añadir</strong>.</li>
-        </ol>
-      </div>
-      <button id="btnContinuar" class="boton enlace" type="button">Continuar en el navegador</button>
-      <p id="estado" class="estado" role="status"></p>
-    </div>
+  <main>
+    <h1>HUP tiene nueva dirección</h1>
+    <p>La app ahora vive en <strong>sistemahupbd.web.app</strong> y abre también con datos móviles.<br>Si instalaste la app anterior, desinstálala e instala la nueva.</p>
+    <a id="go" href="https://sistemahupbd.web.app/qa/">Ir a HUP</a>
   </main>
-
-  <main id="aviso" class="centro" hidden>
-    <div class="tarjeta">
-      <img class="logo" src="../icons/qa-icon-192.png" width="128" height="128" alt="Logo HUP QA">
-      <p id="avisoTexto"></p>
-      <form id="formQa" hidden autocomplete="off">
-        <input id="campoQa" class="campo" type="url" inputmode="url" placeholder="https://script.google.com/macros/s/…/exec" aria-label="Dirección de QA">
-        <button class="boton primario" type="submit">Continuar</button>
-      </form>
-      <p id="avisoEstado" class="estado" role="status"></p>
-    </div>
-  </main>
-
-  <div id="carga" class="carga" hidden>
-    <img class="logo" src="../icons/qa-icon-512.png" width="512" height="512" alt="">
-    <a id="enlaceDirecto" href="#" target="_blank" rel="noopener noreferrer" hidden>¿Tarda demasiado? Abrir directamente</a>
-  </div>
-
-  <iframe id="app" title="HUP · QA" allow="clipboard-write; fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-
-  <noscript>Este sistema necesita JavaScript.</noscript>
-  <script src="../config.js"></script>
-  <script src="../validar-url.js"></script>
-  <script src="../shell.js"></script>
+  <script>
+    (function () {
+      var target = 'https://sistemahupbd.web.app/qa/' + (location.search || '');
+      document.getElementById('go').href = target;
+      if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(function (list) { list.forEach(function (r) { r.unregister(); }); }).catch(function () {});
+      setTimeout(function () { location.replace(target); }, 1500);
+    })();
+  </script>
 </body>
 </html>
